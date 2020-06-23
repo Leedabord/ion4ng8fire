@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "ion4start",
-    "public": "public",
+    "public": "www",
     "ignore": [
       "firebase.json",
       "** /.*",
