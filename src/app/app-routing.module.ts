@@ -4,9 +4,9 @@ import { IonicModule } from '@ionic/angular';
 
 const routes: Routes = [
   // { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
+  // { path: '', redirectTo: 'login', pathMatch: 'full' },
   // { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  / { path: '', redirectTo: 'login', pathMatch: 'full' },
-  // { path: 'login', loadChildren: './tabs/tabs.module#TabsPageModule' },
+  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
 /*   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'details/:id', loadChildren: './details/details.module#DetailsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
@@ -18,8 +18,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     IonicModule,
-    RouterModule.forRoot(routes)
-//    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })
