@@ -17,6 +17,6 @@ export class Tab2aPage {
     setTimeout(function() {
       console.log('done')
       top.backdropDismiss = true
-    }, 5000)
+    }, 3000)
   }
 }
