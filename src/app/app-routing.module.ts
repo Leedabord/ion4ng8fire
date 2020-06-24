@@ -4,8 +4,12 @@ import { IonicModule } from '@ionic/angular';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  // { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: '', loadChildren: 
+  './tabs/tabs.module#TabsPageModule' },
+  { path: 'login', loadChildren: 
+  // './tabs/tabs.module#TabsPageModule' }, 
+  './login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'home', loadChildren: 
   './home/home.module#HomePageModule' },

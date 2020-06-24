@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="items" class="list-mini-content" padding>
+<ion-content *ngIf="items" class="ion-padding list-mini-content" >
   <div *ngIf="items.length > 0" class="list-mini">
     <ion-list>
       <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">

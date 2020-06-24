@@ -16,7 +16,7 @@ export class ProfilePageGuard implements CanActivate {
       return true;
     } else {
       // Navigate to the login page
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['login']);
       return false;
     }
   }
