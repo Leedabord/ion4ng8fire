@@ -3,19 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { IonicModule } from '@ionic/angular';
 
-const routes: Routes = [
+const tabRoutes: Routes = [
   {
     path: 'tabs',
     component: TabsPage,
     children: [
-      {
-        path: 'tab1',
-        children: [
-          {
-            path: '',
+      { path: 'tab1', 
             loadChildren: '../tab1/tab1.module#Tab1PageModule'
-          }
-        ]
       },
       {
         path: 'tab2',
@@ -28,12 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'tab3',
-        children: [
-          {
-            path: '',
             loadChildren: '../tab3/tab3.module#Tab3PageModule'
-          }
-        ]
       },
       {
         path: '',
@@ -52,7 +41,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(tabRoutes)
   ],
   exports: [RouterModule]
 })
