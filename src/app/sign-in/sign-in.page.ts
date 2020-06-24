@@ -2,7 +2,7 @@ import { Component, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FirebaseAuthService } from '../firebase-auth.service';
+import { AuthSvc } from '../firebase-auth.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -30,7 +30,7 @@ export class SignInPage {
     public angularFire: AngularFireAuth,
     public router: Router,
     private ngZone: NgZone,
-    private authService: FirebaseAuthService
+    private authService: AuthSvc
   ) {
     this.signInForm = new FormGroup({
       'email': new FormControl('', Validators.compose([

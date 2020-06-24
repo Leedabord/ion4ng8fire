@@ -20,7 +20,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from '../environments/environment';
-import { FirebaseAuthService } from './firebase-auth.service';
+import { AuthSvc } from './firebase-auth.service';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Tab2aPage } from './tab2a/tab2a.page';
@@ -40,7 +40,7 @@ import { Tab2aPage } from './tab2a/tab2a.page';
     ReactiveFormsModule
 ],
   providers: [
-    FirebaseAuthService,
+    AuthSvc,
 //    StatusBar,
 //    SplashScreen,
 //    ImagePicker,

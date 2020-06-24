@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileModel } from './profile.model';
-import { FirebaseAuthService } from '../firebase-auth.service';
+import { AuthSvc } from '../firebase-auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +14,7 @@ export class ProfilePage implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private authService: FirebaseAuthService
+    private authService: AuthSvc
   ) { }
 
   ngOnInit() {

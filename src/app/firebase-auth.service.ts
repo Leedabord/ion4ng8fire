@@ -2,32 +2,32 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, Subject, from } from 'rxjs';
 import { Platform } from '@ionic/angular';
-import { User, auth } from 'firebase/app';
+import { User, auth } from 'firebase/app';  
+// import * as firebase from 'firebase/app';
+// import { FirebaseService } from './firebase.service';
 import { ProfileModel } from './profile/profile.model';
 
 @Injectable()
-export class FirebaseAuthService {
+export class AuthSvc {
 
   currentUser: User;
   userProviderAdditionalInfo: any;
   redirectResult: Subject<any> = new Subject<any>();
 
   constructor(
-    public angularFire: AngularFireAuth,
+    public afAuthObj: AngularFireAuth,
     public platform: Platform
   ) {
-    this.angularFire.onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in.
+    this.afAuthObj.onAuthStateChanged((user) => {
+      if (user) {  // User is signed in.
         this.currentUser = user;
-      } else {
-        // No user is signed in.
+      } else {  // No user is signed in.
         this.currentUser = null;
       }
     });
 
     // when using signInWithRedirect, this listens for the redirect results
-    this.angularFire.getRedirectResult()
+    this.afAuthObj.getRedirectResult()
     .then((result) => {
       // result.credential.accessToken gives you the Provider Access Token. You can use it to access the Provider API.
       if (result.user) {
@@ -89,15 +89,15 @@ export class FirebaseAuthService {
   }
 
   signOut(): Observable<any> {
-    return from(this.angularFire.signOut());
+    return from(this.afAuthObj.signOut());
   }
 
   signInWithEmail(email: string, password: string): Promise<auth.UserCredential> {
-    return this.angularFire.signInWithEmailAndPassword(email, password);
+    return this.afAuthObj.signInWithEmailAndPassword(email, password);
   }
 
   signUpWithEmail(email: string, password: string): Promise<auth.UserCredential> {
-    return this.angularFire.createUserWithEmailAndPassword(email, password);
+    return this.afAuthObj.createUserWithEmailAndPassword(email, password);
   }
 
   socialSignIn(providerName: string, scopes?: Array<string>): Promise<any> {
@@ -111,10 +111,10 @@ export class FirebaseAuthService {
     }
 
     if (this.platform.is('desktop')) {
-      return this.angularFire.signInWithPopup(provider);
+      return this.afAuthObj.signInWithPopup(provider);
     } else {
       // web but not desktop, for example mobile PWA
-      return this.angularFire.signInWithRedirect(provider);
+      return this.afAuthObj.signInWithRedirect(provider);
     }
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { AuthSvc2 } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
  };
 
   constructor(
-    private authService: AuthService,
+    private authService: AuthSvc2,
     private formBuilder: FormBuilder,
     private router: Router
   ) { }

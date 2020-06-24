@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthSvc2 } from '../services/auth.service';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
 
   constructor(
     public loadingCtrl: LoadingController,
-    private authService: AuthService,
+    private authService: AuthSvc2,
     private router: Router,
     private route: ActivatedRoute
   ) { }
