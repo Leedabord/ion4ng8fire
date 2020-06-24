@@ -4,7 +4,7 @@ import { Observable, Subject, from } from 'rxjs';
 import { Platform } from '@ionic/angular';
 import { User, auth } from 'firebase/app';  
 // import * as firebase from 'firebase/app';
-// import { FirebaseService } from './firebase.service';
+import { FirebaseService } from './services/firebase.service';
 import { ProfileModel } from './profile/profile.model';
 
 @Injectable()

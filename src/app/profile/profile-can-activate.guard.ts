@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { FirebaseAuthService } from '../firebase-auth.service';
+import { AuthSvc } from '../firebase-auth.service';
 
 @Injectable()
 export class ProfilePageGuard implements CanActivate {
 
   constructor(
-    private firebaseAuthService: FirebaseAuthService,
+    private firebaseAuthService: A,
     private router: Router
   ) {}
 
