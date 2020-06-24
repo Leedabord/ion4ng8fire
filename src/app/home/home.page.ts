@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthSvc2 } from '../services/auth.service';
-import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
 
   constructor(
     public loadingCtrl: LoadingController,
-    private authService: AuthSvc2,
+    private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
