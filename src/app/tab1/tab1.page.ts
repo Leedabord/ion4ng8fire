@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PopoverController} from '@ionic/angular';
 import { Tab2aPage } from '../tab2a/tab2a.page';
+
+// import { AuthService } from '../services/auth.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -9,7 +14,10 @@ import { Tab2aPage } from '../tab2a/tab2a.page';
 })
 export class Tab1Page {
 
-  constructor(public popoverController: PopoverController) {}
+  constructor(public popoverController: PopoverController, 
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) { }
 
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
@@ -20,5 +28,10 @@ export class Tab1Page {
     });
     return await popover.present();
   }
+
+  goLoginPage(){
+    this.router.navigate(["/register"]);
+  }
+
 
 }
