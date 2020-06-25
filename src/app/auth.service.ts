@@ -1,48 +1,49 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable, Subject, from } from 'rxjs';
-import { Platform } from '@ionic/angular';
-import { User, auth } from 'firebase/app';  
-// import * as firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
 import { FirebaseService } from './services/firebase.service';
-import { ProfileModel } from './profile/profile.model';
+import { AngularFireAuth } from '@angular/fire/auth';
 
-/* ===  @Injectable({ providedIn: 'root' })  === */
-
-@Injectable()
-export class AuthSvc {
-
-  currentUser: User;
-  userProviderAdditionalInfo: any;
-  redirectResult: Subject<any> = new Subject<any>();
+@Injectable()  // ({ providedIn: 'root' })
+export class AuthService {
 
   constructor(
-    public afAuthObj: AngularFireAuth,
     private firebaseService: FirebaseService,
-    public platform: Platform
-  ) {
-    this.afAuthObj.onAuthStateChanged((user) => {
-      if (user) {  // User is signed in.
-        this.currentUser = user;
-      } else {  // No user is signed in.
-        this.currentUser = null;
-      }
-    });
+    public afAuth: AngularFireAuth
+  ){}
 
-    // when using signInWithRedirect, this listens for the redirect results
-    this.afAuthObj.getRedirectResult()
-    .then((result) => {
-      // result.credential.accessToken gives you the Provider Access Token. You can use it to access the Provider API.
-      if (result.user) {
-        this.setProviderAdditionalInfo(result.additionalUserInfo.profile);
-        this.currentUser = result.user;
-        this.redirectResult.next(result);
-      }
-    }, (error) => {
-      this.redirectResult.next({error: error.code});
-    });
-  }  // end constructor
+  doRegister(value){
+   return new Promise<any>((resolve, reject) => {
+     firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+     .then(
+       res => resolve(res),
+       err => reject(err))
+   })
+  }
 
+  doLogin(value){
+   return new Promise<any>((resolve, reject) => {
+     firebase.auth().signInWithEmailAndPassword(value.email, value.password)
+     .then(
+       res => resolve(res),
+       err => reject(err))
+   })
+  }
+
+  doLogout(){
+    return new Promise((resolve, reject) => {
+      this.afAuth.signOut()
+      .then(() => {
+        this.firebaseService.unsubscribeOnLogOut();
+        resolve();
+      }).catch((error) => {
+        console.log(error);
+        reject();
+      });
+    })
+  }
+}
+
+/* ===  
   getRedirectResult(): Observable<any> {
     return this.redirectResult.asObservable();
   }
@@ -138,4 +139,4 @@ export class AuthSvc {
     return this.socialSignIn(provider.providerId);
   }
 
-}
+  === */

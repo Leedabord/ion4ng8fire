@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +26,7 @@ export class RegisterPage implements OnInit {
   };
 
   constructor(
-    private authService: AuthService,
+    private authsvc: AuthService,
     private formBuilder: FormBuilder,
     private router: Router
   ) { }
@@ -45,7 +45,7 @@ export class RegisterPage implements OnInit {
   }
 
   tryRegister(value){
-    this.authService.doRegister(value)
+    this.authsvc.doRegister(value)
      .then(res => {
        console.log(res);
        this.errorMessage = "";

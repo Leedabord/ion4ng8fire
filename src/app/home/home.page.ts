@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '..//auth.service';
 
 @Component({
   selector: 'app-home',

@@ -3,9 +3,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { PopoverController} from '@ionic/angular';
 import { Tab2aPage } from '../tab2a/tab2a.page';
-
-// import { AuthService } from '../services/auth.service';
-
+import { AuthSvc2 } from '../auth.service';
 
 @Component({
   selector: 'app-tab1',
