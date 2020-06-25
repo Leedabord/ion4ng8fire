@@ -3,7 +3,7 @@ import * as firebase from 'firebase/app';
 import { FirebaseService } from './services/firebase.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
-@Injectable()  // ({ providedIn: 'root' })
+@Injectable({ providedIn: 'root' })
 export class AuthService {
 
   constructor(
